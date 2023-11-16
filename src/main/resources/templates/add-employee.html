@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Employee</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/add-employee.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Employee</h1>
+        <form action="#" th:action="@{/add-employee}" method="post" th:object="${employee}">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" th:field="*{firstName}">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" th:field="*{lastName}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" th:field="*{email}">
+            </div>
+            <!-- Include other fields as necessary -->
+            <div class="form-group">
+                <button type="submit">Add Employee</button>
+            </div>
+        </form>
+        <a href="/employees">Back to list</a>
+    </div>
+    
+    <footer>
+    <p>&copy; <span th:text="${#dates.year(T(java.util.Calendar).getInstance())}">2023</span> Fardin Ahmed. All rights reserved.</p>
+	</footer>
+
+</body>
+</html>

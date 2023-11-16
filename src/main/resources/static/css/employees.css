@@ -1,0 +1,82 @@
+/* styles.css */
+
+/* Style the webpage background */
+body {
+    background-color: #dddada;
+    font-family: 'Roboto', sans-serif;
+    color: #787878;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Style the table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Style the "Add New Employee" button */
+.btn-add {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+    background-color: #218838;
+}
+
+/* Add a hover effect for each row in the table */
+tbody tr:hover {
+    background-color: transparent; /* Remove the background color on hover */
+}
+
+/* Add a border glow effect to table cells on hover */
+tbody tr:hover td {
+    border: 2px solid #a0ff07; /* Yellow border color on hover */
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5); /* Glow effect on hover */
+}
+
+/* Reset cell borders when not hovering */
+tbody tr td {
+    border: 1px solid #ddd; /* Default border style for cells */
+    transition: border 0.3s, box-shadow 0.3s; /* Smooth transition for border and glow effect */
+}
+
+/* Style links */
+a {
+    text-decoration: none;
+    color: #007bff;
+    transition: text-decoration 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    width: 100%;        
+    position: fixed;   
+    bottom: 0;          
+    left: 0;            
+    text-align: center; 
+    background-color: #f8f9fa; 
+    padding: 10px 0;           
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1); 
+}
