@@ -1,17 +1,25 @@
-// common.js
-
 document.addEventListener('DOMContentLoaded', (event) => {
     // Basic Form Validation Example
     const addEditForm = document.querySelector('form');
     if (addEditForm) {
         addEditForm.addEventListener('submit', (e) => {
-            // Example: Validate that email is not empty
+            let formValid = true;
+
+            // Validate that email is not empty
             const emailInput = document.querySelector('input[type="email"]');
-            if (emailInput && emailInput.value === '') {
-                alert('Email is required.');
-                e.preventDefault(); // Prevent form submission
+            if (emailInput && emailInput.value.trim() === '') {
+                alert('Email cannot be empty.');
+                formValid = false;
+                e.preventDefault();  // Correctly using preventDefault as a function call
             }
-            // Add other validation checks as needed
+
+            // Validate that first name is not empty
+            const firstNameInput = document.querySelector('input[name="firstName"]'); // Corrected the selector
+            if (firstNameInput && firstNameInput.value.trim() === '') {
+                alert('First Name cannot be left empty');
+                formValid = false;
+                e.preventDefault();  // Correctly using preventDefault as a function call
+            }
         });
     }
 });

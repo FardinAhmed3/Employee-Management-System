@@ -1,0 +1,51 @@
+/* employee-info.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.employee-details {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.employee-details p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.employee-details strong {
+    color: #555;
+    margin-right: 10px;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    background: #4CAF50;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+a:hover {
+    background: #45a049;
+}
