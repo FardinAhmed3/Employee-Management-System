@@ -30,6 +30,7 @@
                 <td>
                     <a th:href="@{/edit-employee(employeeId=${employee.id})}">Edit</a>
                     <a th:href="@{/delete-employee(employeeId=${employee.id})}" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</a>
+                    <a th:href="@{/employee-info/{employeeId}(employeeId=${employee.id})}">More Information</a>
                 </td>
             </tr>
         </tbody>
@@ -39,6 +40,6 @@
     <p>&copy; <span th:text="${#dates.year(T(java.util.Calendar).getInstance())}">2023</span> Fardin Ahmed. All rights reserved.</p>
 	</footer>
 
-
+ 	<script th:src="@{/js/common.js}"></script>
 </body>
 </html>
