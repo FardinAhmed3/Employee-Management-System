@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.LocalDate;				//Import for date of birth
 
 @Entity
 public class Employee {
@@ -15,17 +16,24 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
-    // Add other relevant fields (e.g., department, position)
-
+    private LocalDate dateOfBirth;			//Additional labels
+    private String department;
+    //You can add additional fields here
+    
+    public enum Department {				//Classifying 3 separate departments
+        FRONT_END_DEVELOPER, BACK_END_DEVELOPER, TESTING_ENGINEER
+    }
     // Default constructor
     public Employee() {
     }
 
     // Constructor with all fields
-    public Employee(String firstName, String lastName, String email) {
+    public Employee(String firstName, String lastName, String email, LocalDate dateOfBirth, Department department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.dateOfBirth=dateOfBirth;
+        this.department=department.name();
     }
 
     // Getters and setters
@@ -60,6 +68,24 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    //Aditional get/sets for new fields
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department.name();
+    }
 
     // Add other methods if necessary (e.g., toString(), equals(), hashCode())
 }
+
