@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.time.LocalDate;				//Import for date of birth
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Employee {
@@ -14,26 +15,51 @@ public class Employee {
     private Long id;
 
     private String firstName;
+    private String middleName;//NEW
     private String lastName;
     private String email;
     private LocalDate dateOfBirth;			//Additional labels
     private String department;
-    //You can add additional fields here
+
+    //additional fields here
     
     public enum Department {				//Classifying 3 separate departments
-        FRONT_END_DEVELOPER, BACK_END_DEVELOPER, TESTING_ENGINEER
+        FRONT_END_DEVELOPER("Front End Developer"),
+        BACK_END_DEVELOPER("Back End Developer"),
+        TESTING_ENGINEER("Testing Engineer");
+    	
+    	private final String displayName;
+    	Department(String displayName){
+    		this.displayName=displayName;
+    	}
+    	public String getDisplayName() {
+    		return displayName;
+    	}
+        // Static method to get enum from display name
+        public static Department fromDisplayName(String displayName) {
+            for (Department dept : Department.values()) {
+                if (dept.getDisplayName().equalsIgnoreCase(displayName)) {
+                    return dept;
+                }
+            }
+            throw new IllegalArgumentException("No department with display name " + displayName);
+        }
+   
     }
     // Default constructor
     public Employee() {
     }
-
+    
     // Constructor with all fields
-    public Employee(String firstName, String lastName, String email, LocalDate dateOfBirth, Department department) {
+    public Employee(String firstName,String middleName, String lastName,
+    		String email, LocalDate dateOfBirth, String department) {
+    	
         this.firstName = firstName;
+        this.middleName=middleName;
         this.lastName = lastName;
         this.email = email;
         this.dateOfBirth=dateOfBirth;
-        this.department=department.name();
+        this.department=department;
     }
 
     // Getters and setters
@@ -51,6 +77,14 @@ public class Employee {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+    	return middleName;
+    }
+    
+    public void setMiddleName(String middleName) {
+    	this.middleName=middleName;
     }
 
     public String getLastName() {
@@ -77,14 +111,16 @@ public class Employee {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
-    public String getDepartment() {
-        return department;
+    //Defining DOB Format
+    public String getFormattedDateOfBirth() {
+        if (this.dateOfBirth == null) {
+            return null;
+        }
+        return this.dateOfBirth.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
     }
 
-    public void setDepartment(Department department) {
-        this.department = department.name();
-    }
+    public String getDepartment() { return department; }
+    public void setDepartment(String department) { this.department = department; }
 
     // Add other methods if necessary (e.g., toString(), equals(), hashCode())
 }

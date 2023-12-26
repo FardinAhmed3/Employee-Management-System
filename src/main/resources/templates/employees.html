@@ -16,6 +16,7 @@
             <tr>
                 <th>ID</th>
                 <th>First Name</th>
+                <th>Middle Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Actions</th>
@@ -25,6 +26,7 @@
             <tr th:each="employee : ${employees}">
                 <td th:text="${employee.id}"></td>
                 <td th:text="${employee.firstName}"></td>
+                <td th:text="${employee.middleName}"></td>
                 <td th:text="${employee.lastName}"></td>
                 <td th:text="${employee.email}"></td>
                 <td>

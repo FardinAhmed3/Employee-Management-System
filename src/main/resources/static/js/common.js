@@ -10,16 +10,43 @@ document.addEventListener('DOMContentLoaded', (event) => {
             if (emailInput && emailInput.value.trim() === '') {
                 alert('Email cannot be empty.');
                 formValid = false;
-                e.preventDefault();  // Correctly using preventDefault as a function call
+                e.preventDefault(); 
             }
 
             // Validate that first name is not empty
-            const firstNameInput = document.querySelector('input[name="firstName"]'); // Corrected the selector
+            const firstNameInput = document.querySelector('input[name="firstName"]');
             if (firstNameInput && firstNameInput.value.trim() === '') {
-                alert('First Name cannot be left empty');
+                alert('First Name cannot be left empty.');
                 formValid = false;
-                e.preventDefault();  // Correctly using preventDefault as a function call
+                e.preventDefault(); 
             }
+            
+            //Validating DOB & if Age <18
+            const dobInput=document.querySelector('input[name="dateOfBirth"]');
+            if (dobInput && dobInput.value.trim()===''){
+				alert('Date of birth cannot be left empty.');
+				formValid= false;
+				e.preventDefault();
+			}
+            if (dobInput && !isValidAge(dobInput.value)) {
+                alert('Employee must be at least 18 years old.');
+                formValid = false;
+                e.preventDefault();  
+            }
+
+            // other validation checks 
+
         });
     }
 });
+
+function isValidAge(dob) {
+    const currentDate = new Date();
+    const enteredDate = new Date(dob);
+    const age = currentDate.getFullYear() - enteredDate.getFullYear();
+    const monthDifference = currentDate.getMonth() - enteredDate.getMonth();
+    if (monthDifference < 0 || (monthDifference === 0 && currentDate.getDate() < enteredDate.getDate())) {
+        age--;
+    }
+    return age >= 18;
+}		

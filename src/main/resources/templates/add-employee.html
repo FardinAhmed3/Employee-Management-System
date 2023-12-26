@@ -13,6 +13,10 @@
                 <input type="text" id="firstName" name="firstName" th:field="*{firstName}">
             </div>
             <div class="form-group">
+                <label for="middleName">Middle Name:</label>
+                <input type="text" id="middleName" name="middleName" th:field="*{middleName}">
+            </div>            
+            <div class="form-group">
                 <label for="lastName">Last Name:</label>
                 <input type="text" id="lastName" name="lastName" th:field="*{lastName}">
             </div>
@@ -20,7 +24,23 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" th:field="*{email}">
             </div>
+            <div class="form-group">
+				<label for="dateOfBirth">Date of Birth:</label>
+				<input type="date" id="dateOfBirth" name="dateOfBirth" th:field="*{dateOfBirth}">
+			</div>
+			
+			<div class="form-group">
+    			<label for="department">Department:</label>
+    			<select id="department" th:field="*{department}">
+        		<option value="" th:unless="${departments}">Select Department</option>
+        		<option th:each="dept : ${departments}" 
+                th:value="${dept}" 
+                th:text="${dept}">Department Name</option>
+    			</select>
+			</div>
+
             <!-- Include other fields as necessary -->
+          
             <div class="form-group">
                 <button type="submit">Add Employee</button>
             </div>
