@@ -4,6 +4,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (addEditForm) {
         addEditForm.addEventListener('submit', (e) => {
             let formValid = true;
+            
+            // Validate first name, last name, and middle name for non-alphabetic characters
+            ['firstName', 'lastName', 'middleName'].forEach(function(fieldId) {
+            const inputField = document.getElementById(fieldId);
+                if (inputField && containsNonAlphabetic(inputField.value)) {
+                    alert('Name fields should only contain alphabetic characters.');
+                    formValid = false;
+                    e.preventDefault();
+                }
+            });
 
             // Validate that email is not empty
             const emailInput = document.querySelector('input[type="email"]');
@@ -33,9 +43,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 formValid = false;
                 e.preventDefault();  
             }
-
             // other validation checks 
-
         });
     }
 });
@@ -50,3 +58,9 @@ function isValidAge(dob) {
     }
     return age >= 18;
 }		
+
+// Function to check for non-alphabetic characters
+function containsNonAlphabetic(value) {
+// Matches any character that is not a letter
+return /[^A-Za-z0-9]/.test(value);
+}
