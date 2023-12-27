@@ -1,10 +1,8 @@
 package com.ems.fa.controller;
 
 import com.ems.fa.model.Employee;
-import com.ems.fa.model.Employee.Department;
 import com.ems.fa.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,9 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,8 +40,10 @@ public class EmployeeController {
     public String showAddEmployeeForm(Model model) {
         model.addAttribute("employee", new Employee());
         model.addAttribute("departments", getDepartmentDisplayNames());
+        model.addAttribute("gender",getGenderDisplayNames());
         return "add-employee"; 
-    }  
+    }
+    
 
     // Method to handle the submission of the add employee form
     @PostMapping("/add-employee")
@@ -98,6 +95,11 @@ public class EmployeeController {
     private List<String> getDepartmentDisplayNames() {
         return Arrays.stream(Employee.Department.values())
                      .map(Employee.Department::getDisplayName)
+                     .collect(Collectors.toList());
+    }
+    private List<String> getGenderDisplayNames() {
+        return Arrays.stream(Employee.Gender.values())
+                     .map(Employee.Gender::getDisplayName)
                      .collect(Collectors.toList());
     }
     
