@@ -32,10 +32,18 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" th:field="*{email}" />
             </div>
+            <div class="form-group">
+                <label for="Street Address">Street Address:</label>
+                <input type="text" id="Street Address" th:field="*{address_streetAddress}" />
+            </div>
+            <div class="form-group">
+                <label for="City">City:</label>
+                <input type="text" id="City" th:field="*{address_city}" />
+            </div>
             <!--Temporary DOB field display-->
           <!--  <p><strong>Date of Birth:</strong> <span th:text="${employee.dateOfBirth}">Date of Birth</span></p>-->
           <input type="hidden" th:field="*{dateOfBirth}" />
-          
+          <input type="hidden" th:field="*{gender}" />
             <div class="form-group">
                 <label for="department">Department:</label>
                 <select id="department" th:field="*{department}">
@@ -46,6 +54,7 @@
                             th:selected="${dept.equals(employee.department)}">Department Name</option>
                 </select>
             </div>
+
 			<!-- Field for date of birth-->
 			<!-- Disregarding this field, dob should not be changeable for a person
 			this should be implemented later during admin access development

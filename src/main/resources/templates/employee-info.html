@@ -15,6 +15,12 @@
             <p><strong>Last Name:</strong> <span th:text="${employee.lastName}">Last Name</span></p>
             <p><strong>Email:</strong> <span th:text="${employee.email}">Email</span></p>
             <p><strong>Date of Birth:</strong> <span th:text="${employee.dateOfBirth}">Date of Birth</span></p>
+            <p><strong>Gender:</strong> <span th:text="${employee.gender}">Gender</span></p>
+            <p><strong>Address:</strong> 
+                <span th:text="${employee.address_streetAddress != null and employee.address_city != null ?
+                 employee.address_streetAddress + ', ' + employee.address_city :
+                (employee.address_streetAddress != null ? employee.address_streetAddress : employee.address_city)}">Address</span>
+            </p>            
             <p><strong>Department:</strong> <span th:text="${employee.department}">Department</span></p>
         </div>
         <a href="#" th:href="@{/employees}">Back to List</a>
